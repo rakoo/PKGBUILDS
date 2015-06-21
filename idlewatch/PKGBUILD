@@ -1,0 +1,32 @@
+# Maintainer: Matthieu Rakotojaona <matthieu.rakotojaona@gmail.com>
+
+pkgname=idlewatch
+pkgver=0.1.0
+pkgrel=1
+epoch=
+pkgdesc='Watch and synchronize an IMAP mailbox'
+arch=('i686' 'x86_64')
+url='https://github.com/rakoo/idlewatch'
+license=('CC0')
+groups=()
+makedepends=('go')
+source=("https://github.com/rakoo/idlewatch/archive/v${pkgver}.zip")
+sha256sums=(b8add975057c314796d669e39ee479db37a25a219d37720475aa1f4eab8b418a)
+
+build() {
+  cd "$srcdir/$pkgname-$pkgver"
+  go build -o idlewatch
+}
+
+package() {
+  cd "$srcdir/$pkgname-$pkgver"
+
+  # systemctl service file
+  install -D -m644  'idlewatch.service' "$pkgdir/usr/lib/systemd/user/idlewatch.service"
+
+  # idlewatch binary
+  install -D -m755 'idlewatch' "$pkgdir/usr/bin/$pkgname"
+
+  # license
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}

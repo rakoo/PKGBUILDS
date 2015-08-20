@@ -1,7 +1,7 @@
 # Maintainer: Matthieu Rakotojaona <matthieu.rakotojaona@gmail.com>
 
 pkgname=idlewatch
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 epoch=
 pkgdesc='Watch and synchronize an IMAP mailbox'
@@ -11,7 +11,7 @@ license=('CC0')
 groups=()
 makedepends=('go')
 source=("https://github.com/rakoo/idlewatch/archive/v${pkgver}.zip")
-sha256sums=(35c94c75a0c1ba4c067e84845803367c28e98052b56efcc87a55acddc6a5a89d)
+sha256sums=(57dd503a343c60659b2347d95ce10bf9079b563f26132db9c4636871458f0b2b)
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
